@@ -19,4 +19,4 @@ class Item():
         }
 
     def save_to_mongo(self):
-        Database.update('items', self.json())
+        Database.insert('items', self.json())

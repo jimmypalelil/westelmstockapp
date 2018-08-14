@@ -6,4 +6,4 @@ item_bp = Blueprint('item_blueprint', __name__)
 
 @item_bp.route('/new_item/<sku>/<desc>', methods=['POST','GET'])
 def new_item(sku, desc):
-    Item(sku,desc).save_to_mongo()
+    Item(sku, desc).save_to_mongo()
