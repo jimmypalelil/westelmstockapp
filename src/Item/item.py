@@ -14,7 +14,8 @@ class Item():
 
     def json(self):
         return {
-            "sku": self._id,
+            "_id": self._id,
+            "sku": self.sku,
             "desc": self.desc
         }
 
