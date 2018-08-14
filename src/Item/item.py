@@ -13,7 +13,7 @@ class Item():
 
     def json(self):
         return {
-            "sku": self._id,
+            "_id": self._id,
             "desc": self.desc
         }
 
