@@ -3,10 +3,9 @@ import uuid
 from src.common.database import Database
 
 class Item():
-    def __init__(self, sku, desc, _id=None):
-        self.sku = sku
+    def __init__(self, sku, desc, _id=None):        
         self.desc = desc
-        self._id = uuid.uuid4().hex
+        self._id = sku
 
     @classmethod
     def get_by_sku(cls, sku):
