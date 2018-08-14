@@ -3,17 +3,18 @@ import uuid
 from src.common.database import Database
 
 class Item():
-    def __init__(self, sku, desc, _id=None):        
+    def __init__(self, sku, desc, _id=None):
         self.desc = desc
-        self._id = sku
+        self.sku = sku
+        self._id = sku[-4:]
 
     @classmethod
     def get_by_sku(cls, sku):
-        return cls(**Database.find_one('items', {'_id': sku}))
+        return cls(**Database.find_one('items', {'sku': sku}))
 
     def json(self):
         return {
-            "_id": self._id,
+            "sku": self._id,
             "desc": self.desc
         }
 
