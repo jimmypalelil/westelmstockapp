@@ -9,7 +9,7 @@ class Item():
 
     @classmethod
     def get_by_sku(cls, sku):
-        return cls(**Database.find_one('items', {'sku': sku}))
+        return cls(**Database.find_one('items', {'_id': sku}))
 
     def json(self):
         return {
