@@ -11,8 +11,8 @@ class Item():
         self._id = sku[-4:]
 
     @classmethod
-    def get_by_sku(cls, sku):
-        return cls(**Database.find_one('items', {'sku': sku}))
+    def get_by_id(cls, id):
+        return cls(**Database.find_one('items', {'_id': id}))
 
     def json(self):
         return {
