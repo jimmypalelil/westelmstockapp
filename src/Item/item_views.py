@@ -14,7 +14,6 @@ def search_item(id):
     id = id[-4:]
     item = Item.get_by_id(id)
     if (item is None):
-        return "Null"
+        return None
     else:
-        itemJson = dumps(item.json())
-        return itemJson
+        return dumps(item.json())
