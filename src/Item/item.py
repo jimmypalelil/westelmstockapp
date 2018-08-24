@@ -12,7 +12,11 @@ class Item():
 
     @classmethod
     def get_by_id(cls, id):
-        return cls(**Database.find_one('items', {'_id': id}))
+        item = Database.find_one('items', {'_id': id})
+        if(item is None):
+            return None
+        else:
+            return cls(**item)
 
     def json(self):
         return {

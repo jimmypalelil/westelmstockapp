@@ -13,6 +13,8 @@ def new_item(sku, desc, claimed, stock):
 def search_item(id):
     id = id[-4:]
     item = Item.get_by_id(id)
-    itemJson = dumps(item.json())
-    print(itemJson)
-    return itemJson
+    if (item is None):
+        return "Null"
+    else:
+        itemJson = dumps(item.json())
+        return itemJson
