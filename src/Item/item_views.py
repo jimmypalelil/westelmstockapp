@@ -7,8 +7,8 @@ item_bp = Blueprint('item_blueprint', __name__)
 
 @item_bp.route('/new_item/<sku>/<desc>/<claimed>/<stock>/<price>', methods=['POST','GET'])
 def new_item(sku, desc, claimed, stock, price):
-    Item(sku, desc, claimed, stock, price).save_to_mongo()
-    return 200
+    if request.method == 'POST':
+        Item(sku, desc, claimed, stock, price).save_to_mongo()
 
 @item_bp.route('/search_item/<id>', methods=['GET','POST'])
 def search_item(id):
