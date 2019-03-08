@@ -19,4 +19,4 @@ def search_item(item_id):
     if item is None:
         return "Null"
     else:
-        return make_response(item.json())
+        return dumps(item.json())
