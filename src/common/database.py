@@ -1,8 +1,9 @@
 import pymongo
+import os
 
 
 class Database(object):
-    URI = 'mongodb://jimmyavenged:9830100avenue@ds119652.mlab.com:19652/westelm'
+    URI = os.environ.get('MONGODB_URI')
     DATABASE = None
 
     @staticmethod

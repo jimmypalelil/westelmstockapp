@@ -3,21 +3,31 @@ import uuid
 from src.common.database import Database
 
 class Item():
-    def __init__(self, sku, desc, _id=None):
+    def __init__(self, sku, desc, claimed, stock, price, _id=None):
         self.desc = desc
         self.sku = sku
+        self.claimed = claimed
+        self.stock = stock
         self._id = sku[-4:]
+        self.price = price
 
     @classmethod
-    def get_by_sku(cls, sku):
-        return cls(**Database.find_one('items', {'sku': sku}))
+    def get_by_id(cls, id):
+        item = Database.find_one('items', {'_id': id})
+        if(item is None):
+            return None
+        else:
+            return cls(**item)
 
     def json(self):
         return {
             "_id": self._id,
             "sku": self.sku,
-            "desc": self.desc
+            "desc": self.desc,
+            "claimed": self.claimed,
+            "stock": self.stock,
+            "price": self.price
         }
 
     def save_to_mongo(self):
-        Database.insert('items', self.json())
+        Database.update('items', {"_id": self._id}, self.json())
