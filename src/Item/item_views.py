@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, make_response
+from flask import Blueprint, request, make_response
 from bson.json_util import dumps
 
 from src.Item.item import Item
@@ -19,4 +19,4 @@ def search_item(item_id):
     if item is None:
         return "Null"
     else:
-        return dumps(item.json())
+        return make_response(item.json())
