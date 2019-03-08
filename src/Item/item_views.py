@@ -17,4 +17,4 @@ def search_item(id):
     if (item is None):
         return "Null"
     else:
-        return (item.json())
+        return dumps(item.json())
